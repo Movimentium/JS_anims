@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Animación círculo con JS. v01</title>
+    <link rel="stylesheet" href="JS_circleAnim01.css">
+</head>
+<body>
+    <div id="circle"></div>
+
+    <script>
+        var xLeft = 20;  // Posición inicial: <--20px 
+        let circleDiv = document.getElementById("circle"); 
+        var theInterval = setInterval(animCircle, 50);  // Ejecuta animCircle cada 50ms
+
+        function animCircle() {
+            // Parar pasados 4s
+            if (xLeft >= (4000/50)) {
+                circleDiv.style.backgroundColor = "dimgrey"; 
+                clearInterval(theInterval); 
+                console.log("STOP. xLeft: " + xLeft); 
+            } else {
+                xLeft += 1; 
+                circleDiv.style.left = xLeft + "px"; 
+                console.log("xLeft: " + xLeft); 
+            }
+        }
+    </script>
+</body> 
+</html>
