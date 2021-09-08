@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Animación círculo con JS. v03</title>
+    <link rel="stylesheet" href="JS_circleAnim01.css">
+</head>
+<body>
+    <div id="circle"></div>
+
+    <script>
+        // Similar a JS_circleAnim02.html pero con User Interaction
+        var xLeft = 20;  // Posición inicial: <--20px 
+        let circleDiv = document.getElementById("circle"); 
+        var theInterval;
+        var isPlaying = false; 
+
+        function animCircle() {
+            xLeft += 1; 
+            circleDiv.style.left = xLeft + "px"; 
+            theInterval = requestAnimationFrame(animCircle);    // <<--
+        }
+
+        function onCircleClick() {   // Stop/Play
+            if (isPlaying) {
+                isPlaying = false; 
+                circleDiv.style.backgroundColor = "dimgrey"; 
+                cancelAnimationFrame(theInterval);                  // <<-- Stop
+            } else {
+                isPlaying = true; 
+                circleDiv.style.backgroundColor = "greenyellow"; 
+                theInterval = requestAnimationFrame(animCircle)     // <<-- Play
+            }
+        }
+
+        function onCircleDblClick() {  // Reset
+            isPlaying = false; 
+            circleDiv.style.backgroundColor = "dimgrey"; 
+            cancelAnimationFrame(theInterval);                  // <<-- 
+            xLeft = 20; 
+            circleDiv.style.left = xLeft + "px"; 
+        } 
+
+        circleDiv.addEventListener("click",onCircleClick); 
+        circleDiv.addEventListener("dblclick",onCircleDblClick);     
+
+    </script>
+</body> 
+</html>
