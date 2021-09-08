@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Animación círculo con JS. v02</title>
+    <link rel="stylesheet" href="JS_circleAnim01.css">
+</head>
+<body>
+    <div id="circle"></div>
+
+    <script>
+        // Más eficiente que en JS_circleAnim01.html
+        var xLeft = 20;  // Posición inicial: <--20px 
+        let circleDiv = document.getElementById("circle"); 
+        var theInterval;
+
+        function animCircle(tiempo) {
+            xLeft += 1; 
+            circleDiv.style.left = xLeft + "px"; 
+            // Parar pasados 4s
+            if (tiempo < 4000) {
+                theInterval = requestAnimationFrame(animCircle);    // <<--
+                console.log("theInterval: " + theInterval);
+            } else {
+                circleDiv.style.backgroundColor = "dimgrey"; 
+                cancelAnimationFrame(theInterval);                  // <<-- 
+                console.log("theInterval: " + theInterval);
+            }
+        }
+        
+        theInterval = requestAnimationFrame(animCircle); 
+        console.log("theInterval: " + theInterval);
+    </script>
+</body> 
+</html>
