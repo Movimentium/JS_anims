@@ -1,0 +1,18 @@
+/* JS_animAPI_01.css */
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+body {
+    background-color: rgb(30, 30, 30);
+    color: rgb(200, 200, 200);
+    font-family: 'Lato', Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#square {
+    background-color: black;
+    border: red solid 4px; 
+    width: 200px;
+    height: 200px;
+    margin: 100px;
+}
